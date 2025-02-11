@@ -33,10 +33,6 @@ The detail-tourist-spot branch includes enhancements to display detailed informa
 - **Database:** MySQL
 - **Other:** JavaScript, HTML/CSS
 
-## How to Contribute
-
-If you are interested in contributing to this project or have any suggestions, feel free to fork the repository and create pull requests.
-
 ## Contact
 
 For any questions or further information, please contact:
