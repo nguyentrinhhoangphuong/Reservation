@@ -18,13 +18,13 @@ The Reservation System is a web application designed to manage and display infor
 
 The main branch contains the core functionality of the application, including displaying tourist spots and their details.
 
-![Main Branch Screenshot](path_to_main_branch_screenshot.png)
+![Main Branch Screenshot](public/images/home.png)
 
 ### 2. Detail-Tourist-Spot Branch
 
 The detail-tourist-spot branch includes enhancements to display detailed information about each tourist spot, including room details and a list of users who have liked the spot.
 
-![Detail-Tourist-Spot Branch Screenshot](path_to_detail_tourist_spot_branch_screenshot.png)
+![Detail-Tourist-Spot Branch Screenshot](public/images/details-tourist-spot.png.png)
 
 ## Technologies Used
 
