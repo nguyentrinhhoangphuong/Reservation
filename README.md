@@ -24,7 +24,7 @@ The main branch contains the core functionality of the application, including di
 
 The detail-tourist-spot branch includes enhancements to display detailed information about each tourist spot, including room details and a list of users who have liked the spot.
 
-![Detail-Tourist-Spot Branch Screenshot](public/images/details-tourist-spot.png.png)
+![Detail-Tourist-Spot Branch Screenshot](public/images/details-tourist-spot.png)
 
 ## Technologies Used
 
