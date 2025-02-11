@@ -32,3 +32,4 @@ require __DIR__ . '/auth.php';
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/tourist-spot/{id}/{slug?}', [HomeController::class, 'getTouristSpotByID'])->name('tourist-spot');

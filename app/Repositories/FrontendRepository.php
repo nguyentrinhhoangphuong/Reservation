@@ -13,4 +13,10 @@ class FrontendRepository implements FrontendRepositoryInterface
         $data = TouristSpot::with(['photo', 'city'])->ordered()->paginate(6);
         return $data;
     }
+
+    public function getTouristSpotByID($id)
+    {
+        $data = TouristSpot::with(['photo', 'city', 'address', 'rooms.photos', 'likedByUsers', 'comments.user', 'articles'])->findOrFail($id);
+        return $data;
+    }
 }

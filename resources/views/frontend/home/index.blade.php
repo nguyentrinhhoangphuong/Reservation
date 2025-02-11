@@ -43,16 +43,17 @@
             <div class="row d-flex align-items-stretch">
                 @foreach ($touristSpots as $spot)
                 <div class="col-md-4 mb-4">
-                    <a href="" class="text-decoration-none w-100">
+                    <a href="{{ route('tourist-spot', ['id' => $spot->id, 'slug' => $spot->slug]) }}" class="text-decoration-none w-100">
                         <div class="card h-100">
                             <img src="{{ $spot->photo->first()->path ?? null }}" class="card-img-top" alt="{{ $spot->name }}" style="object-fit: cover; height: 200px">
                             <div class="card-body d-flex flex-column">
-                                <h6 class="card-title">{{ $spot->name }}, {{ $spot->city->name  }}</h6>
+                                <h6 class="card-title">{{ $spot->name }}, {{ $spot->city->name }}</h6>
                             </div>
                         </div>
                     </a>
                 </div>
                 @endforeach
+                {{ $touristSpots->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

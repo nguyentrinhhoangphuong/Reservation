@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\FrontendRepositoryInterface;
 use App\Repositories\FrontendRepository;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('frontend.*', function ($view) {
+            $view->with('placeholder', asset('images/placeholder.jpg'));
+        });
     }
 }

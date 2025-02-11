@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Presenters\TouristSpotPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class TouristSpot extends Model
 {
-    use HasFactory;
+    use HasFactory, TouristSpotPresenter;
 
     public function photo()
     {
@@ -19,8 +20,29 @@ class TouristSpot extends Model
         return $this->belongsTo(City::class, 'city_id');
     }
 
-    public function scopeOrdered($query)
+    public function likedByUsers()
     {
-        return $query->orderBy('name', 'asc');
+        return $this->morphToMany(User::class, 'likeable');
     }
+
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'tourist_spots_id');
+    }
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class,'tourist_spots_id');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class,'tourist_spots_id');
+    }
+
 }
