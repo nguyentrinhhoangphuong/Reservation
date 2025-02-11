@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, UserPresenter;
 
     /**
      * The attributes that are mass assignable.
@@ -42,14 +44,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    /**
-     * Get the user's full name.
-     *
-     * @return string
-     */
-    public function getFullNameAttribute()
+    
+    public function comments()
     {
-        return ucwords("{$this->surname} {$this->name}");
+        return $this->hasMany(Comment::class, 'user_id');
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'user_id');
+    }
+
+    public function likedTouristSpots()
+    {
+        return $this->morphedByMany(TouristSpot::class, 'likeable');
+    }
+
+    public function likedArticle()
+    {
+        return $this->morphedByMany(Article::class, 'likeable');
     }
 }

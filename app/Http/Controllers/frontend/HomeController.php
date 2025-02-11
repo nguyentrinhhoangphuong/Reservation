@@ -20,4 +20,14 @@ class HomeController extends Controller
         $touristSpots = $this->frontendRepository->getTouristSpot();
         return view('frontend.home.index', compact('touristSpots'));
     }
+
+    public function getTouristSpotByID($id, $slug = null)
+    {
+        $touristSpot = $this->frontendRepository->getTouristSpotByID($id);
+        if ($slug && $slug !== $touristSpot->slug) {
+            return redirect()->route('tourist-spot', ['id' => $id, 'slug' => $touristSpot->slug]);
+        }
+    
+        return view('frontend.home.show', compact('touristSpot'));
+    }
 }
